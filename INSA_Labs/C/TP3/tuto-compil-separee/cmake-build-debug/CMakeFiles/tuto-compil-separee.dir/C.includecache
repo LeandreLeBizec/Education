@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/leandre/TP C/TP3/tuto-compil-separee/main.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+mesFoncyionsMaths.h
+/home/leandre/TP C/TP3/tuto-compil-separee/mesFoncyionsMaths.h
+
+/home/leandre/TP C/TP3/tuto-compil-separee/mesFoncyionsMaths.c
+mesFoncyionsMaths.h
+/home/leandre/TP C/TP3/tuto-compil-separee/mesFoncyionsMaths.h
+math.h
+-
+
+/home/leandre/TP C/TP3/tuto-compil-separee/mesFoncyionsMaths.h
+

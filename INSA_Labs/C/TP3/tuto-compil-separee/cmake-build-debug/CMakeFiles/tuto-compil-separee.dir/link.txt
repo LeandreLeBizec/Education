@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -pedantic-errors -g CMakeFiles/tuto-compil-separee.dir/main.c.o CMakeFiles/tuto-compil-separee.dir/mesFoncyionsMaths.c.o -o tuto-compil-separee  -lm 

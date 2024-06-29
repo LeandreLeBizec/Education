@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -pedantic-errors -g CMakeFiles/tuto_debogueur.dir/main.c.o -o tuto_debogueur  -lm 

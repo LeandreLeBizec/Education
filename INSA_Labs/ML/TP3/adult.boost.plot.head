@@ -1,0 +1,12 @@
+set encoding iso_8859_1
+set terminal pngcairo
+set output "adult.boost.png"
+set xlabel "number of rounds"
+set ylabel "error rate"
+
+set xrange [0:1000]
+set grid mytics ytics xtics lw 2, lw .5
+set mytics
+set yzeroaxis
+set key top right
+plot  "adult.boost.plot" using 1:2 w lines lw 2  title "infeq50K",  "adult.boost.plot" using 1:3 w lines lw 2  title "sup50K",  "adult.boost.plot" using 1:4 w lines lw 3  title "Overall"

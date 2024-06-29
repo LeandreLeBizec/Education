@@ -1,0 +1,3 @@
+/home/leandre/Info 3a/TP_C/TP2/projSinus/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/leandre/Info 3a/TP_C/TP2/projSinus/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/leandre/Info 3a/TP_C/TP2/projSinus/cmake-build-debug/CMakeFiles/projSinus.dir

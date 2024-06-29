@@ -1,0 +1,129 @@
+---
+title: "Lois marginales, conjointes, conditionnelles"
+output: pdf_document
+fontsize: 11pt
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Exercice 2.1 - Exemple loi discrete
+
+```{r}
+#chargement librairie
+library(rje)
+library(questionr)
+library(ggplot2)
+library(reshape2)
+library(mvtnorm)
+library(scatterplot3d)
+
+#Generation matrice
+#p 
+p <- matrix(c(0.02, 0.04, 0.01, 0.06, 0.15, 0.15, 0.02, 0.20, 0.14, 0.10, 0.10, 0.01), nrow=3, ncol=4)
+
+print(p)
+print(p[,2])
+```
+
+
+## Probabilites marginales
+```{r}
+#px 
+px <- apply(p,1,sum)
+print(px)
+#py
+py <- apply(p,2,sum)
+print(py)
+```
+
+## Probabilites conditionnelles - P(X=xi | Y=5) = P(X=xi , Y=5)/P(Y=5)
+```{r}
+#p_X_Y5
+#P(X|Y)=P(X^Y)/P(Y)
+p_X_Y5 <- p[,2]/py[2]
+
+print(p_X_Y5)
+```
+
+## Fonctions spécifiques
+Utilisation de marginTable et conditionTable
+```{r}
+
+pmx <- marginTable(p, 1)
+print(pmx)
+
+pmy <- marginTable(p, 2)
+print(pmy)
+
+pc_X_Y5 <- conditionTable(p,1,2,2)
+print(pc_X_Y5)
+```
+
+# Exercice 2.2 - Loi multinomiale
+
+Modélisation du problème : quelle loi et quels paramètres ?
+38 valeurs avec 3 sorties possible (rouge, noire, vert)
+loi multinomiale(12, c(18/38,18/38,2/38))
+
+## Probabilites conjointes
+```{r}
+# construction de toutes les combinaisons possibles
+#13*13 possibilité (tout les couples (x1, x2))
+R = expand.grid(0:12, 0:12)
+#création de x3 = 12-x1-x2
+R[, 3] = 12 - R[, 1] - R[, 2]
+names(R) = c("x1", "x2", "x3")
+print(R)
+# attention, toutes les combinaisons proposées ne sont pas possibles (observez R!), il faudra en tenir compte dans la suite
+```
+
+```{r}
+# calcul des probabilites associees a toutes les combinaisons possibles (vérifiez !)
+
+theta <- c(18/38, 18/38, 2/38)
+R[,4] = apply(R,1,function(x) if (x[3]>=0) {dmultinom(x,12,theta)} else {0})
+names(R) <- c("x1", "x2", "x3", "proba")
+print(R)
+
+s <- 0
+for(i in 1:169){
+  s <- s + R[i,4]
+}
+print(s)
+#avec un for créer un la colone puis l'ajouter à R
+```
+
+```{r}
+
+# calcul des probabilites marginales 
+
+
+```
+## Visualisation
+```{r}
+# attention, si erreur du type "Error in plot.new() : figure margins too large"
+# il suffit d'elargir la fenêtre de visu... si, si...
+library(latex2exp)
+library(scatterplot3d)
+
+par(  # Modification des couleurs 
+  col.main="red", col.axis = "blue",
+   # Modification des tailles de police
+  cex.main = 1.2, cex.axis = 1.0, cex.lab = 1.2)
+
+scatterplot3d(x = R$x1, y = R$x2, z = R$x3, 
+              color = grey(0.9-R$p*5), 
+              type = "p",  # tracer des points
+              pch = 16,    # remplir les points
+              xlab = TeX(r'($x_1$)'),                
+              ylab = TeX(r'($x_2$)'), 
+              zlab = TeX(r'($x_3$)'),
+              main = "Fonction de masse de la loi multinomiale",
+              sub ="couleur sombre = probabilite forte")
+
+```
+
+

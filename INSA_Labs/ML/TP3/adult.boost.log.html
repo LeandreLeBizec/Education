@@ -1,0 +1,81 @@
+<html><head><title>Log</title>
+<script type = "text/javascript" src = "http://www.irisa.fr/texmex/people/raymond/Utilities/Html-table/table-tri-sort.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "http://www.irisa.fr/texmex/people/raymond/Utilities/Html-table/table.css" media = "all">
+<script language = "JavaScript" type = "text/javascript">
+function affiche(prem,deuz)
+{
+			document.getElementById('un').innerHTML=prem;
+			document.getElementById('deux').innerHTML=deuz;
+			}</script>
+
+<script language = "JavaScript" type = "text/javascript">
+function color(ligne,couleur)
+{
+		   document.getElementById(ligne).style='background-color:'+couleur;
+		   		   }</script>
+</head>
+<body>
+<h1 style='text-align: center;'>Analyse of adult.boost</h1>
+<table id='feature' class="example table-autosort:0 table-stripeclass:alternate">
+<thead><tr>
+		   <th class="table-sortable:alphanumeric">Feature</th>
+		   <th class="table-sortable:alphanumeric">type</th>
+		   <th class="table-sortable:numeric">position</th>
+		   <th class="table-sortable:numeric">selected</th>
+		   <th class="table-sortable:alphanumeric">selected in %</th>
+		   </tr></thead><tbody>
+<tr id='lignefnlwgt' onMouseOut="color('lignefnlwgt','white')" onMouseOver="color('lignefnlwgt','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">fnlwgt</td><td>numeric</td><td>fnlwgt</td><td>4</td><td> 4.0%</td></tr>
+<tr id='lignerace' onMouseOut="color('lignerace','white')" onMouseOver="color('lignerace','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">race</td><td>discret</td><td>race</td><td>1</td><td> 1.0%</td></tr>
+<tr id='ligneage' onMouseOut="color('ligneage','white')" onMouseOver="color('ligneage','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">age</td><td>numeric</td><td>age</td><td>13</td><td>13.0%</td></tr>
+<tr id='lignecapital-gain' onMouseOut="color('lignecapital-gain','white')" onMouseOver="color('lignecapital-gain','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">capital-gain</td><td>numeric</td><td>capital-gain</td><td>17</td><td>17.0%</td></tr>
+<tr id='lignehours-per-week' onMouseOut="color('lignehours-per-week','white')" onMouseOver="color('lignehours-per-week','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">hours-per-week</td><td>numeric</td><td>hours-per-week</td><td>3</td><td> 3.0%</td></tr>
+<tr id='ligneeducation-num' onMouseOut="color('ligneeducation-num','white')" onMouseOver="color('ligneeducation-num','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">education-num</td><td>numeric</td><td>education-num</td><td>6</td><td> 6.0%</td></tr>
+<tr id='lignecapital-loss' onMouseOut="color('lignecapital-loss','white')" onMouseOver="color('lignecapital-loss','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">capital-loss</td><td>numeric</td><td>capital-loss</td><td>20</td><td>20.0%</td></tr>
+<tr id='ligneoccupation' onMouseOut="color('ligneoccupation','white')" onMouseOver="color('ligneoccupation','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">occupation</td><td>discret</td><td>occupation</td><td>11</td><td>11.0%</td></tr>
+<tr id='lignenative-country' onMouseOut="color('lignenative-country','white')" onMouseOver="color('lignenative-country','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">native-country</td><td>discret</td><td>native-country</td><td>5</td><td> 5.0%</td></tr>
+<tr id='ligneworkclass' onMouseOut="color('ligneworkclass','white')" onMouseOver="color('ligneworkclass','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">workclass</td><td>discret</td><td>workclass</td><td>3</td><td> 3.0%</td></tr>
+<tr id='lignemarital-status' onMouseOut="color('lignemarital-status','white')" onMouseOver="color('lignemarital-status','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">marital-status</td><td>discret</td><td>marital-status</td><td>4</td><td> 4.0%</td></tr>
+<tr id='ligneeducation' onMouseOut="color('ligneeducation','white')" onMouseOver="color('ligneeducation','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">education</td><td>discret</td><td>education</td><td>3</td><td> 3.0%</td></tr>
+<tr id='lignerelationship' onMouseOut="color('lignerelationship','white')" onMouseOver="color('lignerelationship','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">relationship</td><td>discret</td><td>relationship</td><td>7</td><td> 7.0%</td></tr>
+<tr id='lignesex' onMouseOut="color('lignesex','white')" onMouseOver="color('lignesex','Aqua')"><td style='text-align:left;' onMouseOver="affiche('','')">sex</td><td>discret</td><td>sex</td><td>3</td><td> 3.0%</td></tr>
+</tbody></table>
+<div id=un name=un contenteditable=true style='position:fixed;  top:5px; left:5px'></div>
+<div id=deux contenteditable=true name=deux style='position:fixed;  top:5px; right:5px'></div>
+<div style='margin: 0 auto; text-align:center;'>Average number of nodes:3(complete prof 1 tree)<br>Max depth:1</div>
+<table id = 'rules' class="example table-autosort table-stripeclass:alternate table-autofilter table-filterable">
+<thead><tr><tr>		   	<th class = "table-sortable:numeric">iter </th> 			<th class = "table-sortable:alphanumeric">Rule </th> 			<th class = "table-sortable:alphanumeric">label</th>			<th class = "table-sortable:alphanumeric">vote</th>			</tr><tr>		   		<th></th> 				<th><input name = "filter"  onkeyup = "Table.filter(this,this)"> </th> 				<th class = "table-filterable"></th>				<th><select onchange = "Table.filter(this,this)"><option value="function(){return true;}">All</option><option value ="function(val){return parseFloat(val)>=0;}">positive</option><option value = "function(val){return parseFloat(val)<0;}">negative</option></select></th></tr></thead><tbody>
+<tr><td>0</td><td style='text-align:left;'>[marital-status:NON(Married-civ-spouse)]</td><td>infeq50K</td><td>  1.330</td></tr>
+<tr><td>0</td><td style='text-align:left;'>[marital-status:NON(Married-civ-spouse)]</td><td>sup50K</td><td> -1.330</td></tr>
+<tr><td>1</td><td style='text-align:left;'>[capital-gain:&gt=7073.5]</td><td>infeq50K</td><td> -2.647</td></tr>
+<tr><td>1</td><td style='text-align:left;'>[capital-gain:&gt=7073.5]</td><td>sup50K</td><td>  2.647</td></tr>
+<tr><td>3</td><td style='text-align:left;'>[age:&lt27.5]</td><td>infeq50K</td><td>  0.835</td></tr>
+<tr><td>3</td><td style='text-align:left;'>[age:&lt27.5]</td><td>sup50K</td><td> -0.835</td></tr>
+<tr><td>4</td><td style='text-align:left;'>[capital-loss:&gt=1820.5]</td><td>infeq50K</td><td> -0.989</td></tr>
+<tr><td>4</td><td style='text-align:left;'>[capital-loss:&gt=1820.5]</td><td>sup50K</td><td>  0.989</td></tr>
+<tr><td>15</td><td style='text-align:left;'>[age:&lt21.5]</td><td>infeq50K</td><td>  0.936</td></tr>
+<tr><td>15</td><td style='text-align:left;'>[age:&lt21.5]</td><td>sup50K</td><td> -0.936</td></tr>
+<tr><td>18</td><td style='text-align:left;'>[marital-status:Married-AF-spouse]</td><td>infeq50K</td><td> -1.606</td></tr>
+<tr><td>18</td><td style='text-align:left;'>[marital-status:Married-AF-spouse]</td><td>sup50K</td><td>  1.606</td></tr>
+<tr><td>26</td><td style='text-align:left;'>[capital-loss:&gt=2384.5]</td><td>infeq50K</td><td> -1.090</td></tr>
+<tr><td>26</td><td style='text-align:left;'>[capital-loss:&gt=2384.5]</td><td>sup50K</td><td>  1.090</td></tr>
+<tr><td>30</td><td style='text-align:left;'>[age:&gt=84.5]</td><td>infeq50K</td><td>  1.116</td></tr>
+<tr><td>30</td><td style='text-align:left;'>[age:&gt=84.5]</td><td>sup50K</td><td> -1.116</td></tr>
+<tr><td>36</td><td style='text-align:left;'>[occupation:Priv-house-serv]</td><td>infeq50K</td><td>  1.712</td></tr>
+<tr><td>36</td><td style='text-align:left;'>[occupation:Priv-house-serv]</td><td>sup50K</td><td> -1.712</td></tr>
+<tr><td>45</td><td style='text-align:left;'>[capital-gain:&gt=70654.5]</td><td>infeq50K</td><td> -1.684</td></tr>
+<tr><td>45</td><td style='text-align:left;'>[capital-gain:&gt=70654.5]</td><td>sup50K</td><td>  1.684</td></tr>
+<tr><td>56</td><td style='text-align:left;'>[age:&lt18.5]</td><td>infeq50K</td><td>  1.530</td></tr>
+<tr><td>56</td><td style='text-align:left;'>[age:&lt18.5]</td><td>sup50K</td><td> -1.530</td></tr>
+<tr><td>59</td><td style='text-align:left;'>[native-country:Columbia]</td><td>infeq50K</td><td>  1.118</td></tr>
+<tr><td>59</td><td style='text-align:left;'>[native-country:Columbia]</td><td>sup50K</td><td> -1.118</td></tr>
+<tr><td>66</td><td style='text-align:left;'>[capital-gain:&gt=30961.5]</td><td>infeq50K</td><td>  1.251</td></tr>
+<tr><td>66</td><td style='text-align:left;'>[capital-gain:&gt=30961.5]</td><td>sup50K</td><td> -1.251</td></tr>
+<tr><td>67</td><td style='text-align:left;'>[education:Preschool]</td><td>infeq50K</td><td>  1.420</td></tr>
+<tr><td>67</td><td style='text-align:left;'>[education:Preschool]</td><td>sup50K</td><td> -1.420</td></tr>
+<tr><td>77</td><td style='text-align:left;'>[native-country:Dominican-Republic]</td><td>infeq50K</td><td>  1.031</td></tr>
+<tr><td>77</td><td style='text-align:left;'>[native-country:Dominican-Republic]</td><td>sup50K</td><td> -1.031</td></tr>
+<tr><td>78</td><td style='text-align:left;'>[capital-gain:&gt=70654.5]</td><td>infeq50K</td><td> -1.375</td></tr>
+<tr><td>78</td><td style='text-align:left;'>[capital-gain:&gt=70654.5]</td><td>sup50K</td><td>  1.375</td></tr>
+<tr><td>95</td><td style='text-align:left;'>[capital-loss:&gt=3726.5]</td><td>infeq50K</td><td>  1.186</td></tr>
+<tr><td>95</td><td style='text-align:left;'>[capital-loss:&gt=3726.5]</td><td>sup50K</td><td> -1.186</td></tr>
+</tbody></table></html>

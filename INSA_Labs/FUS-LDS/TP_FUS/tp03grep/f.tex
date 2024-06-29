@@ -1,0 +1,152 @@
+000 - Avril 1993
+Consignes de saisie des publications internes de l'Irisa.
+
+
+
+Pascale Laurent & Philippe Louarn
+Consigne de saisie des publications internes Irisa
+Pascale Laurent et Philippe Louarn
+Programme 0 - hors programme Inria
+Projet Atelier
+Publication interne n°000 - Avril 1993
+6 pages
+Résumé : ce document présente les consignes de saisie sous les formats FrameMaker et LaTeX des publications Internes de l'Irisa.
+Mots-clé : publications internes, Irisa, LaTeX, FrameMaker.
+(Abstract: pto)
+Version provisoire du 19 Novembre 1998.
+Typesetting Irisa's research reports
+Abstract: this document presents how to typeset Irisa's research by using LaTeX or FrameMaker.
+Key-words: research reports, Irisa, LaTeX FrameMaker.
+La réflexion sur la communication scientifique de l'Irisa et de l'Inria a entraîné une série d'actions, certaines spectaculaires (le 25e anniversaire, les changements de logos, etc.), d'autres moins. La politique éditoriale de l'Institut vis à vis du monde extérieur (communauté scientifique et monde industriel) se doit d'évoluer. De plus, la mise à disposition des services de documentation d'outils modernes (ftp, wais, etc.) montre que les documents scientifiques ne peuvent plus se suffire du seul support papier. Il est apparu nécessaire d'harmoniser l'ensemble des publications de l'institut.
+Nous avons défini un style LaTeX ainsi que 2 maquettes FrameMaker pour la saisie des publications internes de l'Irisa qui respecte un certain nombre de critères :
+·		harmoniser les diverses publications internes ;
+·		faciliter le passage d'une publication interne Irisa en rapport de recherche Inria ;
+·		respect autant que possible des normes de l'édition scientifique ;
+·		respect de l'identité visuelle de l'Irisa (logos, couleurs), en particulier pour les versions des documents qui seront disponibles sur le serveur de fichiers de la bibliothèque ;
+·		rester le plus proche possible des habitudes des auteurs.
+1	Commandes spécifiques LaTeX
+1.1	Style du document
+Le style s'appelle PI.sty. En fait, il s'agit d'une option de style s'ajoutant au style standard « article ». La première ligne du document aura donc l'aspect suivant :
+\documentstyle[PI]{article}
+Par défaut, le corps courant est de 10 points. Le mode « recto-verso » est activé. La fonte courante est le cmr.
+Si le texte du document est en français, il faut impérativement appeler l'option de style « french ».
+Si l'on souhaite par exemple obtenir la publication en corps 12, en utilisant le Times-Roman et le texte est en français (cas du présent papier), la première ligne sera alors :
+\documentstyle[12pt,times,PI,french]{article}
+1.2	Les pages de titres
+Un certain nombre d'informations est obligatoire sur la page de titre des publications internes. Ces éléments, saisis en minuscules (avec éventuellement capitales initiales) sont :
+·		le titre dans la langue courante du document (français ou anglais),
+·		le ou les auteurs (dans l'ordre alphabétique),
+·		le numéro et le nom du programme Inria,
+·		le numéro de publication,
+·		la date (mois et année) de publication,
+·		le nombre de pages du document (hors pages de titre),
+·		un résumé dans la langue du document (250 mots maximum), sans alinéa, ni référence bibliographique, ni note en bas de page,
+·		une liste de mots clé dans la langue du document.
+Au verso de cette page de titre, on retrouvera obligatoirement :
+·		le titre dans l'autre langue (français ou anglais),
+·		un résumé dans cette même langue,
+·		une liste de mots clé dans cette langue.
+Certains des éléments ci-dessus sont automatisés (nom du programme Inria) ou peuvent l'être (date et nombre de pages).
+Toutes les commandes ont un nom de la forme \RR... (RR = rapport de recherche), pour compatibilité avec les rapports de recherche Inria.
+L'activation de ces commandes se fait par la commande \makeRR.
+Le squelette minimum d'un publication interne sera donc :
+\documentstyle[PI]{article}
+\RRtitle{...}	 	% titre en français
+\RRetitle{...}	 	% titre en anglais
+\RRauthor{...}	 	% les auteurs
+\RRprogramme{x}		 % numéro du programme Inria (1<x<7)
+\RRprojet{...}		 % nom du projet
+\RRNo{xxx}		 % Numéro de la PI
+\RRresume{...}		 % résumé en français
+\RRmotcle{...}		 % mots clé en français
+\RRabstract{...}		 % résumé en anglais
+\RRkeyword{...}		 % mots clé en anglais
+\begin{document}
+\makeRR
+Si les valeurs mise par LaTeX pour la date et le nombre de pages ne conviennent pas, l'auteur peut appeler les commandes \RRdate{...} et \RRnbpage{...}.
+La langue du document est déduite par LaTeX de la présence (ou de l'absence) de l'option « french » dans le style de document.
+La commande \RRnote{...} permet à l'auteur de porter sur la page de titre des informations diverses non prévues dans la style (contrats, à paraître dans..., remerciements, etc.). La commande standard de LaTeX \thanks{...} reste active. On la réservera pour le champ « auteurs » : adresse électronique, adresse des auteurs non Irisa.
+Non indispensable, mais utile pour une transformation de la publication interne Irisa en rapport de recherche Inria est la commande \URRennes.
+1.3	Les titres courants
+Par défaut, le style « publication interne » redéfinit les hauts et pieds de page. Le style choisi est celui adopté pour la collection documents d'habibilitation, c'est à dire le titre de l'ouvrage en haut des pages impaires et les noms d'auteurs sur les pages paires, avec les numéros de pages sur le côté extérieur de la page, le tout souligné d'un filet. Les pieds de page restent vides. Par défaut, ce sont les contenus des commandes \RRauthor ou \RRtitle (ou \RRetitle si le texte est en anglais) qui sont reportés dans les haut de pages.
+Si l'auteur souhaite conserver ce formatage, mais pas le contenu (titre trop long, on ne veut garder que l'initiale des prénoms, ou tout autre raison...) deux commandes peuvent être utilisées : \authorhead{...} pour les pages paires, et \titlehead{...} pour les pages impaires.
+Si ce formatage déplaît, il est toujours possible d'appeler une commande \pagestyle ou \thispagestyle standard de LaTeX.
+1.4	Exemple commenté
+	 \documentstyle[12pt,PI,french]{article}
+	 % Publication interne Irisa, en français.
+
+	 \RRtitle{Vers un atelier éditorial\\pour les documents structurés}
+5	 % Titre en français. On notera que l'auteur indique à LaTeX
+	 % comment couper la ligne
+	 \RRetitle{Towards structured document\\engineering factory}
+	 % Titre en anglais
+
+10	 \titlehead{Vers un atelier éditorial pour les documents structurés}
+	 % Haut de page impaire redéfini pour éviter les effets
+	 % de la commande « \\ » du titre dans le haut de page
+	 
+	 \RRprojet{Opéra}	 % nom du projet
+15	 \RRprogramme{3}	 % numéro du programme Inria
+	
+	 \RRauthor{	 % les auteurs
+	    Jacques André\thanks{\{Jacques.Andre\}\{Helene.Richy\}@irisa.fr},
+	    Dominique Decouchant\thanks{Bull-Imag, 2 rue de Vignate,
+20	    38610 Giêres, \{decoucha\}\{quint\}@imag.fr},
+	    Vincent Quint\footnotemark[2] et
+	    Hélêne Richy\footnotemark[1]}
+	 
+	 \authorhead{J. André, D. Decouchant, V. Quint \& H. Richy}
+25	 % Haut de page paire redéfini : on ne veut conserver que l'initiale des prénoms
+	
+	 \URRennes	 % Unité de recherche Inria de Rennes
+	 \RRdate{Mars 1993}	 % date de publication
+	 \RRNo{715}	 % no de la pi
+30	
+	 \RRresume{	 % début du résumé (sur plusieurs paragraphes)
+	 Grif est un système interactif pour la production et la consultation
+	 de documents structurés professionnels [...]
+	 que nous comparons à ceux du génie logiciel.
+35	 
+	 Nous montrons alors comment Grif peut être vu comme une première étape
+	 vers la définition d'un « atelier éditorial ».
+	 }	 % fin du résumé en français
+
+40	 \RRmotcle{	 % Mots clé français
+	 Grif, atelier éditorial, travail coopératif, documents structurés,
+	 hypertexte, SGML.
+	 }	 % fin des mots clé français
+45	 \RRabstract{	 % début du résumé en anglais
+	 Grif is a system dedicated to interactive preparation...
+	 ... environment provides to programs.
+	 }	 % fin du résumé en anglais
+
+50	 \RRkeyword{	 % Mots clé anglais
+	 Grif, document engineering, cooperative work, structured
+	 documents, hypertext, SGML.
+	 }	 % fin des mots clé anglais
+	
+55	 \RRnote{	 % Note spécifique
+	 Cette note doit paraître dans les {\em Actes du congrès
+	 Afcet}, Versailles, juin 1993.
+	 }	 % fin de la note
+	
+60	 \begin{document}
+	
+	 \makeRR	 % génération des pages de titre
+
+	% et le reste comme un article standard...
+65	 \section{Introduction}
+	 ...
+On notera l'utilisation des commandes \thanks et \footnotemark dans le champ « auteur » (lignes 18 à 22). La première commande thanks permet de définir les adresses électroniques des auteurs de l'Irisa, et la seconde les adresses courrier et électroniques des auteurs extérieurs. Les commandes footnotemark permettent d'associer une commande thanks déjà définie sur un nouvel auteur. Le comptage n'est pas automatique.
+2	FrameMaker
+Deux maquettes FrameMaker ont été définis. Elles sont dans le répertoire des maquettes Irisa($FMHOME/Irisa) et on pour nom PI-f pour les publications en français et PI-e pour celles en anglais. Nous supposons ici que les auteurs utilisant FrameMaker ont une connaissance suffisante du produit et qu'il n'est pas nécessaire de revenir ici sur des notions telles que « format de paragraphe » ou « page de maquette ».
+La seule chose à noter est l'existence de six pages de maquette différentes : Droite et Gauche pour les pages courantes, Couverture pour la page de garde, Vide pour le recto de cette page, Titre pour la page de titre et DosTitre pour le recto de la page de titre. 
+Les formats de paragraphe définis ont des noms similaires à ceux des style PI et article de LaTeX.
+3	Comment déposer une publication interne 	 à la bibliothèque
+Lorsque la publication est quasiment prête et que le chef de projet a donné son accord pour publication, la bibliothèque se charge d'attribuer un numéro. Afin de conserver la cohérence date-numéro, il ne doit pas être demandé trop tôt.
+Une fois le fichier PostScript fin prêt, le déposer sous : /home/bibli/d1/publi et envoyer un mail à bibli@irisa.fr : la bibliothèque se chargera de l'installer sur la machine ftp, d'en sortir une version papier et d'éditer la page de couverture correspondante pour la version papier. Ce mail doit être accompagné du résumé et de l'abstract (sous forme LaTeX, ou en ascii 8 bits).
+4	Les rapports de recherche Inria
+Le numéro de rapport de recherche Inria est à demander auprès de la bibliothèque.
+Une fois ce numéro connu, remplacer PI de la ligne documentstyle par RR. Changer la valeur de \RRNum par le nouveau numéro, et vérifier que la commande \URRennes est en place. Relancer LaTeX et...
+Se reporter à la note de saisies des rapports de recherches dans : 
+/usr/local/doc/saisie-rr.ps

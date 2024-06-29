@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="tp_a_star">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/stdlib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/algs4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/8puzzle-testing.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

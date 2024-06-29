@@ -1,0 +1,16 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/home/leandre/.opam/insa/bin/ocamldep.opt -modules main.ml > main.ml.depends # cached
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+/home/leandre/.opam/insa/bin/ocamldep.opt -modules lexer.ml > lexer.ml.depends # cached
+# Target: lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+/home/leandre/.opam/insa/bin/ocamlc.opt -c -o lexer.cmo lexer.ml # cached
+# Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
+/home/leandre/.opam/insa/bin/ocamlc.opt -c -o main.cmo main.ml # cached
+# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+/home/leandre/.opam/insa/bin/ocamlopt.opt -c -o lexer.cmx lexer.ml # cached
+# Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
+/home/leandre/.opam/insa/bin/ocamlopt.opt -c -o main.cmx main.ml # cached
+# Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
+/home/leandre/.opam/insa/bin/ocamlopt.opt lexer.cmx main.cmx -o main.native # cached
+# Compilation successful.

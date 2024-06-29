@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/leandre/Info 3a/TP_C/TP6/commun.h
+
+/home/leandre/Info 3a/TP_C/TP6/fichier.c
+fichier.h
+/home/leandre/Info 3a/TP_C/TP6/fichier.h
+
+/home/leandre/Info 3a/TP_C/TP6/fichier.h
+stdlib.h
+-
+stdio.h
+-
+commun.h
+/home/leandre/Info 3a/TP_C/TP6/commun.h
+

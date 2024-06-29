@@ -1,0 +1,1434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+	
+		<title>Ecole ingenieur INSA de Rennes &#8722; Annuaire en ligne du personnel, des étudiants et des enseignants chercheurs</title>
+<meta name="DESCRIPTION" content="Institut National des Sciences Appliquées (INSA) Rennes. Cette école ingénieur propose un premier cycle commun, suivi par un second cycle à choisir parmi six spécialités">
+<meta name="KEYWORDS" content="ecole, école, science, ingenieur, ingénieur, ecole ingenieur, école ingénieur, école ingenieur, ecole ingénieur, école d'ingénieur, ecole d'ingenieur, ecole d'ingénieur, école d'ingenieur, formation, enseignement, diplome, diplôme, international, entreprise, etranger, étranger, recherche, electronique, électronique, informatique, genie civil, génie civil, mecanique, mécanique, physique, telecommunication, télécommunication, chimie, mathematique, mathématique, metallurgie, métallurgie, bretagne, ouest, rennes">
+<meta name="ROBOTS" content="INDEX, FOLLOW">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+		<link href="etudiants3_fichiers/public.css" type="text/css" rel="stylesheet">
+		<style>
+			#colonneMenu {background-image : url("/_include/insa/images/menu/1/fond_menu.gif");}
+		</style>
+		<script language="javascript">
+			function menu(div, statut){
+				switch (statut){
+					case 'on':
+						if (document.getElementById(div)){
+							document.getElementById(div).style.display = 'block';
+						}
+						break;
+					case 'off':
+						//on parcourt l'ensemble des div...
+						var lesDiv = document.getElementsByTagName('div');
+						for (var i=0 ; i<lesDiv.length; i++)
+						{
+							if (new String(lesDiv[i].id).indexOf(div)>-1){
+								document.getElementById(lesDiv[i].id).style.display = 'none';
+							}
+						}
+						break;
+				}
+			}
+			function changerStyle(id, statut){
+				switch (statut){
+					case 'on':
+						document.getElementById(id + 'puce').src = '/_include/insa/images/bandeau/actualite_puce_on.gif';
+						document.getElementById(id + 'titre').className = 'titreActualite_on';
+						break;
+					case 'off':
+						document.getElementById(id + 'puce').src = '/_include/insa/images/bandeau/actualite_puce_off.gif';
+						document.getElementById(id + 'titre').className = 'titreActualite';
+						break;
+				}
+			}
+			function ouvrirDetail(personneID) {
+				window.open("personne.php?SiteID=1&LangueID=1&RubriqueID=62&PersonneID=" + personneID, 'OpenWindow', 'resizable=no, scrollbars=yes, toolbar=no, status=no, width=500, height=500, top=200, left=' + (document.body.scrollWidth / 3));
+			}
+			function redim() {
+				ok=0;
+				if (document.all) {
+					document.body.scrollLeft=2;
+					if ((document.body.scrollLeft>0) && (ww<((screen.width)-step))) {
+						ww+=step;
+						self.window.resizeTo(ww,hh);
+						ok=1;
+						if (ww > (screen.width-50)) {
+							ok=0;
+						}
+					}
+					document.body.scrollTop=2;
+					if (document.body.scrollTop>0) {
+						hh+=step;
+						self.window.resizeTo(ww,hh);
+						ok=1;
+						if (hh > (screen.height-50)) {
+							ok=0;
+						}
+					}
+					if (ok==1) {setTimeout('redim();',10)};
+				}
+			}
+			function majListe(){
+				//si étudiant, on affiche les listes	ddlSpecialite et	ddlFormation
+				//	à la place de						ddlDepa et			ddlLabo
+				var sRbTypePersonneValue = -1;
+				var oDivLabelLabo = document.getElementById('lblAnnuaire_Laboratoire');
+				if (document.frmRech.rbTypePersonne[0].checked) sRbTypePersonneValue = document.frmRech.rbTypePersonne[0].value;
+				if (document.frmRech.rbTypePersonne[1].checked) sRbTypePersonneValue = document.frmRech.rbTypePersonne[1].value;
+				if (document.frmRech.rbTypePersonne[2].checked) sRbTypePersonneValue = document.frmRech.rbTypePersonne[2].value;
+				if (document.frmRech.rbTypePersonne[3].checked) sRbTypePersonneValue = document.frmRech.rbTypePersonne[3].value;
+				if (sRbTypePersonneValue == 1){
+					//rech étudiant
+					document.frmRech.ddlSpecialite.style.display = 'block';
+					document.frmRech.ddlDepa.style.display = 'none';
+					document.frmRech.ddlFormation.style.display = 'block';
+					document.frmRech.ddlLabo.style.display = 'none';
+					oDivLabelLabo.innerHTML = 'Année';
+				}else{
+					//rech normale
+					document.frmRech.ddlSpecialite.style.display = 'none';
+					document.frmRech.ddlDepa.style.display = 'block';
+					document.frmRech.ddlFormation.style.display = 'none';
+					document.frmRech.ddlLabo.style.display = 'block';
+					oDivLabelLabo.innerHTML = 'Laboratoire';
+				}
+			}
+		</script>
+		<style>
+			#presentation {margin-top:30px;margin-bottom:30px;font-family:Arial;font-size:15px;color:#41678F;text-align:justify;}
+
+			#titre {font-family:Arial;font-size:17px;color:#41678F;font-variant: small-caps;font-weight:bolder;}
+			.imageTitre {margin-right:10px;}
+
+			.liste {margin-left:19px;font-family:Arial;font-size:12px;color:#000000;width:100%;}
+			.titre_colonne {padding-top:10px;padding-bottom:5px;font-size: 13px;color: #41678F;font-family: Arial;}
+			.contenu_liste {font-size: 12px;color:#000000;font-family: Arial;}
+			.contenu_liste2 {font-size: 12px;color:#000000;font-family: Arial;font-weight:bolder;}
+
+			.libelle {font-family:Arial;font-size:12px;}
+			.titre {font-family:Arial;font-size:13px;}
+			.cache {font-size:1px;}
+			.souligne {border-top: 1px solid #41678F;font-size:1px;}
+			.traitVertical {border-left: 1px solid #41678F;padding-left: 5px;}
+			.lien {color:#DD8C00;font-family: Arial;font-size : 12px;	text-decoration: none;font-weight:bolder;}
+			.critere {padding-top:10px;padding-bottom:5px;font-size: 13px;color: #0064A2;font-family: Arial;width:"20%"}
+			.libelle {font-size: 13px;color: #0064A2;font-family: Arial;width:"20%"}
+		</style>
+	</head><body>
+
+		<center>
+		<div style="position: relative; width: 1003px; text-align: center;">
+
+		<script language="javascript">
+	function changerImage(id, src){
+		document.getElementById(id).src = src;
+	}
+</script>
+<style>
+	#bandeau_divRelatif{position:relative;}
+	#bandeau_menuHorizontal{position:absolute;top:73px;left:645px;}
+	#bandeau_titreRubrique{position:absolute;top:120px;left:205px;font-family:verdana;color:#FFFFFF;font-size:35px;}
+	#bandeau_navigation{position:absolute;top:165px;left:155px;}
+	#bandeau_navigation .texte{font-family:arial;color:#FFFFFF;font-size:12px;}
+	#bandeau_navigation .texte a{font-family:arial;color:#FFFFFF;font-size:12px;text-decoration:none;}
+	#bandeau_navigation .texte a:hover{font-family:arial;color:#41678F;font-size:12px;text-decoration:none;}
+
+	#divmenuKiosque{position: absolute;top: 27px;left: 208px;z-index:1;}
+	ul#menuKiosque{	margin: 0 0 10 0;padding: 0 0 0 0;list-style: none;font-size:0.8em;letter-spacing:1.5;}
+	#menuKiosque li{border-top-width: 1px;border-left-width: 1px;border-right: black 1px solid;border-bottom: black 1px solid;width:120px;padding-right: 14px;padding-left: 14px;margin: 0px 2px 0px 0px;background-color: #5a8eb5;padding-top: 3px;padding-bottom: 3px;width:121px;}
+	#menuKiosque a{font-family:Arial Narrow;font-size: 12px;color: #FFFFFF;text-decoration: none;}
+	#menuKiosque a:hover{font-family:Arial Narrow;font-size: 12px;color: #9BCFF3;text-decoration: none;font-weight:bolder;}
+
+	.divSousRubrique {position: absolute;top: 20px;left: 0px;z-index:10;border-right: #91acc1 1px solid;border-top: #91acc1 1px solid;border-left: #91acc1 1px solid;border-bottom: #91acc1 1px solid;background-color:#e0e8ee;color: #888888;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;}
+	#bandeau_navigation .sousRubrique a {font-family:Arial Narrow;font-size: 11px;color: #888888;text-decoration: none;}
+	#bandeau_navigation .sousRubrique a:hover {font-family:Arial Narrow;font-size: 11px;color: #41678F;text-decoration: none;}
+</style>
+
+<div id="bandeau_divRelatif">
+
+	<div id="bandeau_menuHorizontal">
+		<div id="divmenuKiosque" style="display: none;" onmouseover="menu('divmenuKiosque', 'on')">
+			<ul id="menuKiosque">
+				<li><a href="http://www.insa-rennes.fr/espace-presse" target="_self">Espace presse</a></li>
+				<li><a href="http://www.insa-rennes.fr/documentation-institutionnelle" target="_self">Documentation institutionnelle</a></li>
+				<li><a href="http://www.insa-rennes.fr/reninsa" target="_self">RENINSA</a></li>
+				<li><a href="http://www.insa-rennes.fr/rapport-recherche" target="_self">Rapport Recherche</a></li>
+			</ul>
+		</div>
+		<table id="Table1" cellpadding="0" cellspacing="0">
+			<tbody><tr>
+				<td class="normal" onmouseover="menu('menuKiosque', 'off')"><a href="http://www.insa-rennes.fr/">Accueil</a></td>
+				<td><img src="etudiants3_fichiers/sepLienRaccourci.gif" alt="" align="middle"></td>
+				<td class="normal" onmouseover="menu('menuKiosque', 'off')"><a href="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=289">Contact</a></td>
+				<td><img src="etudiants3_fichiers/sepLienRaccourci.gif" alt="" align="middle"></td>
+				<td class="normal" onmouseover="menu('menuKiosque', 'off')"><a href="http://www.insa-rennes.fr/plan-site">Plan du site</a></td>
+				<td><img src="etudiants3_fichiers/sepLienRaccourci.gif" alt="" align="middle"></td>
+				<td class="normal" onmouseover="menu('menuKiosque', 'off')"><a href="http://www.insa-rennes.fr/annuaire-insa-rennes">Annuaire</a></td>
+				<td><img src="etudiants3_fichiers/sepLienRaccourci.gif" alt="" align="middle"></td>
+				<td class="normal"><a href="http://www.insa-rennes.fr/redir.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=19" onmouseover="menu('divmenuKiosque', 'on')">Kiosque</a></td>
+			</tr>
+		</tbody></table>
+	</div>
+
+	<div id="bandeau_titreRubrique">Annuaire</div>
+
+	<div id="bandeau_navigation">
+		<table cellpadding="O" cellspacing="0">
+			<tbody><tr>
+				<td align="center" width="50"><a href="http://www.insa-rennes.fr/impression.php?LangueID=1&amp;SiteID=1&amp;RubriqueID=62" onmouseover="changerImage('btn_impression','/_include/insa/images/bandeau/1/btn_impression_on.gif')" onmouseout="changerImage('btn_impression','/_include/insa/images/bandeau/1/btn_impression.gif')" target="_blank"><img id="btn_impression" src="etudiants3_fichiers/btn_impression.gif" alt="Imprimer" align="middle" border="0"></a></td>
+				<td class="texte">Annuaire</td>
+			</tr>
+		</tbody></table>
+	</div>
+
+	<table class="visuel" onmouseover="menu('menuKiosque', 'off');" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td rowspan="2">
+				<img src="etudiants3_fichiers/bandeau_1.jpg"></td>
+			<td>
+				<img src="etudiants3_fichiers/bandeau_2.jpg" usemap="#mapLogo" border="0"></td>
+		</tr>
+		<tr>
+			<td>
+				<img src="etudiants3_fichiers/bandeau_3.jpg"></td>
+		</tr>
+	</tbody></table>
+	<map name="mapLogo">
+		<area shape="rect" coords="140,0,230,100" href="http://www.insa-rennes.fr/">
+	</map>
+
+</div>
+
+		<table class="visuel" onmouseover="menu('divSousRubrique', 'off');" id="Table1" cellpadding="0" cellspacing="0">
+			<tbody><tr>
+				<td id="colonneMenu" valign="top"><style>
+	#menu_divRelatif{position:relative;}
+	#menu {position:relative;padding-left:13px;padding-top:10px;background-image : url("/_include/insa/images/menu/1/fond_menu_haut_1.gif");}
+	#menu a {font-family: Arial;font-size:13px;color:#3A4E97;text-decoration:none;}
+	#menu a:hover {font-family: Arial;font-size:13px;color:#3A4E97;font-weight:bold;text-decoration:none;}
+	.puceMenu {margin-right:6px;}
+
+	ul#sousMenu{position:relative;list-style:none;margin: 0 -8 5 0;width:130px;background-color: #ffffff;left:-13px;border-right: {BordureSousMenu} 1px solid;border-top: {BordureSousMenu} 1px solid;border-bottom: {BordureSousMenu} 1px solid;} #sousMenu li {margin: 0 2 0 -15;font-family: Arial;font-size:11px;color:#41678F;text-decoration:none;text-indent: -7px;} #sousMenu li #sousMenu2 li {margin: 0 0 0 -25;font-family: Arial;font-size:11px;color:#91ACC1;text-decoration:none;text-indent: 0px;}
+
+	#sousMenu li a {font-family: Arial;font-size:11px;color:#41678F;text-decoration:none;}
+	#sousMenu li a:hover {font-family: Arial;font-size:11px;color:#41678F;text-decoration:none;font-weight:bold;}
+	#sousMenu li ul#sousMenu2 {list-style:none;margin: 0 0 10 0;}
+	#sousMenu li #sousMenu2 li a {font-family: Arial;font-size:11px;color:#91ACC1;text-decoration:none;}
+	#sousMenu li #sousMenu2 li a:hover {font-family: Arial;font-size:11px;color:#91ACC1;text-decoration:none;font-weight:bold;}
+	.sousMenu2On {font-family: Arial;font-size:11px;color:#91ACC1;text-decoration:none;font-weight:bold;}
+
+	#acces {position:absolute;top:0px;left:0px;padding-left:13px;padding-top:10px;}
+	#acces input{background-color: #C8D6E1;border: solid 1px #5A8EB5;height: 17px;font-family: Arial;font-size: 11px;color: #5A8EB5;padding-left: 8px;vertical-align: middle;width: 108px;}
+	#accesDirect{background-color: #C8D6E1;height: 17px;font-family: Arial;font-size: 11px;color: #5A8EB5;width: 129px;margin-bottom: 6px;}
+	#accesReserve{background-color: #C8D6E1;border: solid 1px #5A8EB5;height: 17px;font-family: Arial;font-size: 11px;color: #5A8EB5;padding-left: 8px;vertical-align: middle;width: 98px;}
+</style>
+<script language="javascript">
+	function changerPuceMenu(id, statut){
+		switch (statut){
+			case 'on':
+				document.getElementById('puceMenu' + id).src = '/_include/insa/images/menu/1/puce_menu_on.gif';
+				break;
+			case 'off':
+				document.getElementById('puceMenu' + id).src = '/_include/insa/images/menu/1/puce_menu_off.gif';
+				break;
+		}
+	}
+	function menu_rediriger(obj){
+		if (obj.value != ''){
+			location = obj.value;
+		}
+	}
+	var txtRechercherFocus = false;
+	function rollOn(id){
+		document.getElementById(id).style.backgroundColor='#FFFFFF';
+	}
+	function rollOff(id){
+		if (!txtRechercherFocus){
+			document.getElementById(id).style.backgroundColor='';
+		}
+	}
+	var ddlAccesDirectFocus = false;
+	function rollddlAccesDirectOn(){
+		document.getElementById('accesDirect').style.backgroundColor='#FFFFFF';
+	}
+	function rollddlAccesDirectOff(){
+		if (!ddlAccesDirectFocus){
+			document.getElementById('accesDirect').style.backgroundColor='';
+		}
+	}
+	function envoieRecherch(){
+	document.frm.submit();
+	}
+</script>
+<form name="frm" method="get" action="recherche.php">
+<div id="menu">
+		<img src="etudiants3_fichiers/puce_menu_off.gif" id="puceMenu1" class="puceMenu" align="middle"><a href="http://www.insa-rennes.fr/ecole" onmouseover="changerPuceMenu(1,'on')" onmouseout="changerPuceMenu(1,'off')">L'INSA de Rennes</a><br>
+		<ul id="sousMenu" style="display: none;">
+		</ul>
+		<img src="etudiants3_fichiers/puce_menu_off.gif" id="puceMenu2" class="puceMenu" align="middle"><a href="http://www.insa-rennes.fr/formation" onmouseover="changerPuceMenu(2,'on')" onmouseout="changerPuceMenu(2,'off')">Formation</a><br>
+		<ul id="sousMenu" style="display: none;">
+		</ul>
+		<img src="etudiants3_fichiers/puce_menu_off.gif" id="puceMenu3" class="puceMenu" align="middle"><a href="http://www.insa-rennes.fr/recherche" onmouseover="changerPuceMenu(3,'on')" onmouseout="changerPuceMenu(3,'off')">Recherche</a><br>
+		<ul id="sousMenu" style="display: none;">
+		</ul>
+		<img src="etudiants3_fichiers/puce_menu_off.gif" id="puceMenu4" class="puceMenu" align="middle"><a href="http://www.insa-rennes.fr/relations-internationales" onmouseover="changerPuceMenu(4,'on')" onmouseout="changerPuceMenu(4,'off')">International</a><br>
+		<ul id="sousMenu" style="display: none;">
+		</ul>
+		<img src="etudiants3_fichiers/puce_menu_off.gif" id="puceMenu5" class="puceMenu" align="middle"><a href="http://www.insa-rennes.fr/relations-entreprises" onmouseover="changerPuceMenu(5,'on')" onmouseout="changerPuceMenu(5,'off')">Relations Entreprises</a><br>
+		<ul id="sousMenu" style="display: none;">
+		</ul>
+		<img src="etudiants3_fichiers/puce_menu_off.gif" id="puceMenu6" class="puceMenu" align="middle"><a href="http://www.insa-rennes.fr/vie-etudiante-insa" onmouseover="changerPuceMenu(6,'on')" onmouseout="changerPuceMenu(6,'off')">Vie étudiante</a><br>
+		<ul id="sousMenu" style="display: none;">
+		</ul>
+</div>
+<img src="etudiants3_fichiers/fond_menu_bas_1.gif"><br>
+<div id="menu_divRelatif">
+	<div id="acces">
+		<div style="margin-bottom: 6px;">
+			<table onmouseover="rollOn('Requete')" onmouseout="rollOff('Requete')" cellpadding="0" cellspacing="0">
+				<tbody><tr>
+					<td><input id="Requete" name="Requete" value="Recherche" onfocus="txtRechercherFocus=true;document.getElementById('Requete').style.backgroundColor='#FFFFFF';" onblur="txtRechercherFocus=false;document.getElementById('Requete').style.backgroundColor='';" type="text"></td>
+					<td><a onclick="envoieRecherch()" onmouseover="changerImage('btn_rechercher','/_include/insa/images/accueil/btn_rechercher_on.gif')" onmouseout="changerImage('btn_rechercher','/_include/insa/images/accueil/btn_rechercher.gif')"><img id="btn_rechercher" src="etudiants3_fichiers/btn_rechercher.gif" alt="" align="middle" border="0"></a></td>
+				</tr>
+			</tbody></table></div>
+		<select id="accesDirect" name="ddlAccesDirect" onchange="menu_rediriger(this)" onfocus="ddlAccesDirectFocus=true;this.style.backgroundColor='#FFFFFF';" onblur="ddlAccesDirectFocus=false;this.style.backgroundColor='';" onmouseover="rollddlAccesDirectOn();" onmouseout="rollddlAccesDirectOff();">
+			<option value="">Accès directs</option>
+
+			<option value="http://www.insa-rennes.fr/lesThemes.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=20&amp;AccesDirect=1">Actualités</option>
+			<option value="http://www.insa-rennes.fr/lesModules.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=24&amp;AccesDirect=1">Offre de formation</option>
+			<option value="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=202&amp;AccesDirect=1">Admissions</option>
+			<option value="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=186&amp;AccesDirect=1">Spécialités d'Ingénieur</option>
+			<option value="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=30&amp;AccesDirect=1">Masters Recherche</option>
+			<option value="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=29&amp;AccesDirect=1">Laboratoires</option>
+			<option value="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=284">Documentation</option>
+			<option value="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=27">Ingénieurs INSA</option>
+			<option value="http://www.insa-rennes.fr/lesAvis.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=22">Marchés publics</option>
+
+		</select>
+	</div>
+	<img src="etudiants3_fichiers/fond_menu_2.gif"><br>
+</div>
+</form>
+</td>
+				<td bgcolor="#ffffff" valign="top" width="827">
+					<div id="presentation"><span>Pour contacter une personne en particulier à l'INSA de Rennes, consultez notre annuaire en ligne.</span></div>
+					<div id="titre" style=""><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle">Annuaire</div>
+					<form name="frmRech" method="post" id="Form1">
+  						<input name="rechercher" value="1" id="Hidden1" type="hidden">
+  						<table id="tbRech" class="Grid" style="">
+
+  							<tbody><tr>
+  								<td class="critere" valign="top">Vous&nbsp;recherchez</td>
+  								<td colspan="2" class="contenu_liste">
+  									<input name="rbTypePersonne" id="rbTypePersEnseignant" value="2" onclick="majListe()" type="radio"> un personnel d'enseignement et de recherche&nbsp;
+  									<input name="rbTypePersonne" id="rbTypePersEtudiant" value="1" checked="checked" onclick="majListe()" type="radio"> un étudiant&nbsp;<br>
+  									<input name="rbTypePersonne" id="rbTypePersPersonnel" value="3" onclick="majListe()" type="radio"> un personnel administratif et technique&nbsp;
+  									<input name="rbTypePersonne" id="rbTypePersIndifferent" value="" onclick="majListe()" type="radio">Indifférent
+  								</td>
+  							</tr>
+  							<tr>
+  								<td class="critere">Service</td>
+  								<td colspan="2"><select id="ddlService" name="ddlService">
+										<option id="optService" value="">Liste des services</option>
+										<option id="optService" value="18">Agence Comptable - Services Financiers</option>
+										<option id="optService" value="19">Bibliothèque</option>
+										<option id="optService" value="13">Centre Commun de Mecanique (CCM)</option>
+										<option id="optService" value="8">Centre de Ressources Informatiques (CRI)</option>
+										<option id="optService" value="9">Centre des Mathématiques</option>
+										<option id="optService" value="10">Connaissance de l'Entreprise et Insertion Professionnelle (CEIP)</option>
+										<option id="optService" value="16">Direction</option>
+										<option id="optService" value="20">Imprimerie</option>
+										<option id="optService" value="23">Service Communication</option>
+										<option id="optService" value="22">Service de la Recherche</option>
+										<option id="optService" value="17">Service des Formations</option>
+										<option id="optService" value="14">Service des Relations Internationales</option>
+										<option id="optService" value="11">Service des Ressources Humaines</option>
+										<option id="optService" value="12">Service General</option>
+										<option id="optService" value="7">Service Hébergement</option>
+										<option id="optService" value="6">Service Restauration</option>
+										<option id="optService" value="21">Service Santé</option>
+										<option id="optService" value="15">Service Technique Immobilier</option>
+								</select></td>
+  							</tr>
+  							<tr>
+  								<td class="critere"><div id="lblAnnuaire_Laboratoire">Laboratoire</div></td>
+  								<td colspan="2">
+  									<select id="ddlLabo" name="ddlLabo" style="display: none;">
+										<option id="OptLabo" value="">Liste des laboratoires</option>
+										<option id="OptLabo" value="15">Fonction Optiques pour les Technologies de l'information (FOTON &#8722; INSA)</option>
+										<option id="OptLabo" value="11">Institut d'Electronique et de Telecommunications de Rennes (IETR &#8722; INSA)</option>
+										<option id="OptLabo" value="13">Institut de Recherche en Informatique et Systemes Aleatoires (IRISA &#8722; INSA)</option>
+										<option id="OptLabo" value="17">Institut de Recherche en Mathématiques de Rennes (IRMAR - INSA)</option>
+										<option id="OptLabo" value="14">Sciences Chimiques de Rennes - Equipe Chimie-Métallurgie (SCR/CM - INSA)</option>
+										<option id="OptLabo" value="16">Sciences Chimiques de Rennes - Equipe Matériaux Inorganiques : Chimie douce et Réactivité (SCR/MI - INSA)</option>
+										<option id="OptLabo" value="12">Laboratoire de Genie Civil et Genie Mecanique (LGCGM)</option>
+									</select>
+  									<select id="ddlFormation" name="ddlFormation" style="display: block;">
+										<option value="">Liste des années</option>
+										<option value="1">Formation</option>
+										<option value="8">Première année cycle ingénieur</option>
+										<option value="7">Deuxième année cycle ingénieur</option>
+										<option value="6" selected="selected">Troisième année cycle ingénieur</option>
+										<option value="4">Quatrième année cycle ingénieur</option>
+										<option value="3">Cinquième année cycle ingénieur</option>
+										<option value="5">Préparation MASTER</option>
+										<option value="2">Préparation doctorat</option>
+									</select>
+								</td>
+  							</tr>
+  							<tr>
+  								<td class="critere">Département</td>
+  								<td colspan="2">
+  									<select id="ddlDepa" name="ddlDepa" style="display: none;">
+										<option id="optDepa" value="">Liste des départements</option>
+										<option id="optDepa" value="24">Centre des Humanités (HUMA)</option>
+										<option id="optDepa" value="18">Electronique et Informatique Industrielle (EII)</option>
+										<option id="optDepa" value="17">Electronique et Systèmes de Communication (ESC)</option>
+										<option id="optDepa" value="19">Génie Civil et Urbanisme (GCU)</option>
+										<option id="optDepa" value="20">Génie Mécanique et Automatique (GMA)</option>
+										<option id="optDepa" value="22">Informatique (INFO)</option>
+										<option id="optDepa" value="21">Matériaux et Nanotechnologie (MNT)</option>
+										<option id="optDepa" value="23">Sciences et Techniques Pour l'Ingénieur (STPI)</option>
+									</select>
+  									<select id="ddlSpecialite" name="ddlSpecialite" style="display: block;">
+										<option value="">Liste des départements</option>
+										<option value="7">Electronique et Informatique Industrielle</option>
+										<option value="8">Electronique et Systemes de Communications</option>
+										<option value="6">Genie civil et urbanisme</option>
+										<option value="5">Génie mécanique et automatique</option>
+										<option value="4" selected="selected">Informatique</option>
+										<option value="9">Materiaux et Nanotechnologies</option>
+										<option value="10">STPI</option>
+									</select>
+								</td>
+  							</tr>
+  							<tr>
+  								<td class="critere" valign="top">Nom</td>
+  								<td class="contenu_liste"><input name="txtNom" id="txtNom" value="" type="text"></td>
+  								<td class="contenu_liste" rowspan="2" valign="top"><div style="width: 300px;">Compléter avec * pour indiquer une recherche commençant par le nom ou le prénom saisis (exemple : sau*)</div></td>
+  							</tr>
+  							<tr>
+  								<td class="critere" valign="top">Prénom</td>
+  								<td class="contenu_liste"><input name="txtPrenom" id="txtPrenom" value="" type="text"></td>
+  							</tr>
+  							<tr class="FormFooter">
+  								<td></td>
+  								<td><input name="cmdRechercher" value="Rechercher" onclick="document.frmRech.action='lesPersonnes.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=62&amp;Mode=3';document.frmRech.submit();" id="Submit1" title="Rechercher" class="Bouton" type="button"></td>
+  							</tr>
+  						</tbody></table>
+  					</form>
+  					<div id="titre" style=""><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle">Liste des personnes</div>
+					<form name="frmPage" method="post" id="Form2">
+						<table align="center" border="0" cellpadding="0" cellspacing="0" width="90%">
+							<tbody><tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5886);">M. ADDAR Mehdi</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Mehdi.Addar@insa-rennes.fr" onmouseover="document.getElementById('imgMail5886').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5886').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5886" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5808);">M. BAALI Etienne</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Etienne.Baali@insa-rennes.fr" onmouseover="document.getElementById('imgMail5808').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5808').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5808" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5979);">M. BARILLON Thibault</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Thibault.Barillon@insa-rennes.fr" onmouseover="document.getElementById('imgMail5979').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5979').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5979" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5829);">Melle BERREE Anne&#8722;Laure</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Anne-Laure.Berree@insa-rennes.fr" onmouseover="document.getElementById('imgMail5829').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5829').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5829" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5843);">Melle BLAJ Andra Maria</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Andra.Blaj@insa-rennes.fr" onmouseover="document.getElementById('imgMail5843').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5843').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5843" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7412);">M. BOILLON Romain</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:romain.boillon@insa-rennes.fr" onmouseover="document.getElementById('imgMail7412').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7412').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7412" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7382);">M. BOSCHER David</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:david.boscher@insa-rennes.fr" onmouseover="document.getElementById('imgMail7382').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7382').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7382" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5247);">M. BOUILLON Manuel</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Manuel.Bouillon@insa-rennes.fr" onmouseover="document.getElementById('imgMail5247').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5247').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5247" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5934);">M. BOUSSE Erwan</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Erwan.Bousse@insa-rennes.fr" onmouseover="document.getElementById('imgMail5934').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5934').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5934" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5873);">M. CADORET Olivier</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Olivier.Cadoret@insa-rennes.fr" onmouseover="document.getElementById('imgMail5873').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5873').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5873" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5847);">M. CHAMPETIER Etienne</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Etienne.Champetier@insa-rennes.fr" onmouseover="document.getElementById('imgMail5847').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5847').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5847" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5890);">Melle CHARLET Stephanie</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Stephanie.Charlet@insa-rennes.fr" onmouseover="document.getElementById('imgMail5890').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5890').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5890" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5854);">M. CHENEVOTOT Olivier</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Olivier.Chenevotot@insa-rennes.fr" onmouseover="document.getElementById('imgMail5854').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5854').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5854" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5191);">M. COLLEONI Paul</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Paul.Colleoni@insa-rennes.fr" onmouseover="document.getElementById('imgMail5191').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5191').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5191" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7405);">M. CORNIC Mathieu</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:mathieu.cornic@insa-rennes.fr" onmouseover="document.getElementById('imgMail7405').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7405').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7405" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7411);">M. CORRIDOR Olivier</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:olivier.corridor@insa-rennes.fr" onmouseover="document.getElementById('imgMail7411').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7411').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7411" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7402);">M. DANIEL Vincent</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:vincent.daniel@insa-rennes.fr" onmouseover="document.getElementById('imgMail7402').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7402').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7402" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(6225);">M. DAVID Paul</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Paul.David@insa-rennes.fr" onmouseover="document.getElementById('imgMail6225').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail6225').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail6225" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7389);">M. DECRE Quentin</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:quentin.decre@insa-rennes.fr" onmouseover="document.getElementById('imgMail7389').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7389').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7389" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5889);">M. DESFEUX Nicolas</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Nicolas.Desfeux@insa-rennes.fr" onmouseover="document.getElementById('imgMail5889').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5889').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5889" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7482);">M. DESJONQUERES Benoit</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:benoit.desjonqueres@insa-rennes.fr" onmouseover="document.getElementById('imgMail7482').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7482').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7482" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5872);">M. DESNEUF Charles</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Charles.Desneuf@insa-rennes.fr" onmouseover="document.getElementById('imgMail5872').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5872').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5872" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(6761);">M. DORVEAUX Quentin</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:quentin.dorveaux@insa-rennes.fr" onmouseover="document.getElementById('imgMail6761').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail6761').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail6761" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7410);">M. DOUILLET Simon</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:simon.douillet@insa-rennes.fr" onmouseover="document.getElementById('imgMail7410').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7410').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7410" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5849);">M. DOUSSET Sylvain</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Sylvain.Dousset@insa-rennes.fr" onmouseover="document.getElementById('imgMail5849').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5849').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5849" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(4817);">Melle DRAGUSIN Diana Cristina</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Diana.Dragusin@insa-rennes.fr" onmouseover="document.getElementById('imgMail4817').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail4817').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail4817" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7387);">Melle DUSSAUD Daphne</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:daphne.dussaud@insa-rennes.fr" onmouseover="document.getElementById('imgMail7387').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7387').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7387" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5869);">Melle ESCOLIVET Emeline</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Emeline.Escolivet@insa-rennes.fr" onmouseover="document.getElementById('imgMail5869').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5869').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5869" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5840);">M. GALVANE Quentin</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Quentin.Galvane@insa-rennes.fr" onmouseover="document.getElementById('imgMail5840').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5840').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5840" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5790);">M. GRAIGNIC Guillaume</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Guillaume.Graignic@insa-rennes.fr" onmouseover="document.getElementById('imgMail5790').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5790').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5790" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5801);">M. GUICHAOUA Corentin</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Corentin.Guichaoua@insa-rennes.fr" onmouseover="document.getElementById('imgMail5801').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5801').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5801" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5846);">M. GUILPAIN Thibaud</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Thibaud.Guilpain@insa-rennes.fr" onmouseover="document.getElementById('imgMail5846').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5846').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5846" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5870);">M. GUYOT Maxime</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Maxime.Guyot@insa-rennes.fr" onmouseover="document.getElementById('imgMail5870').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5870').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5870" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5913);">M. HAVEZ Maxime</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Maxime.Havez@insa-rennes.fr" onmouseover="document.getElementById('imgMail5913').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5913').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5913" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5836);">M. JAURY Pierre</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Pierre.Jaury@insa-rennes.fr" onmouseover="document.getElementById('imgMail5836').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5836').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5836" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7446);">M. LE BIANNIC Vincent</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:vincent.le-biannic@insa-rennes.fr" onmouseover="document.getElementById('imgMail7446').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7446').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7446" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7449);">Melle LE CORRE Sophie</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:sophie.le-corre@insa-rennes.fr" onmouseover="document.getElementById('imgMail7449').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7449').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7449" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5850);">M. LE MAROUILLE Bertrand</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Bertrand.Le-Marouille@insa-rennes.fr" onmouseover="document.getElementById('imgMail5850').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5850').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5850" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5858);">M. LE MEUR Thibault</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Thibault.Le-Meur@insa-rennes.fr" onmouseover="document.getElementById('imgMail5858').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5858').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5858" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7456);">M. LEMASSON Germain</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:germain.lemasson@insa-rennes.fr" onmouseover="document.getElementById('imgMail7456').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7456').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7456" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7445);">M. LEROUX Alexandre</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:alexandre.leroux@insa-rennes.fr" onmouseover="document.getElementById('imgMail7445').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7445').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7445" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(6002);">M. LEVEQUE Kevin</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Kevin.Leveque@insa-rennes.fr" onmouseover="document.getElementById('imgMail6002').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail6002').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail6002" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5853);">M. MANDEMENT Simon</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Simon.Mandement@insa-rennes.fr" onmouseover="document.getElementById('imgMail5853').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5853').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5853" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5862);">Melle MAURICE Clementine</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Clementine.Maurice@insa-rennes.fr" onmouseover="document.getElementById('imgMail5862').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5862').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5862" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5951);">M. MEDA Ugo</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Ugo.Meda@insa-rennes.fr" onmouseover="document.getElementById('imgMail5951').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5951').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5951" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5939);">M. MIRGAINE Fabien</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Fabien.Mirgaine@insa-rennes.fr" onmouseover="document.getElementById('imgMail5939').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5939').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5939" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5367);">M. MUSSCHE Matthias</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Matthias.Mussche@insa-rennes.fr" onmouseover="document.getElementById('imgMail5367').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5367').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5367" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7447);">M. ODYE Maxime</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:maxime.odye@insa-rennes.fr" onmouseover="document.getElementById('imgMail7447').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7447').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7447" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7460);">M. PANNETIER Guillaume</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:guillaume.pannetier@insa-rennes.fr" onmouseover="document.getElementById('imgMail7460').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7460').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7460" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5892);">M. PHILIPPE Renaud</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Renaud.Philippe@insa-rennes.fr" onmouseover="document.getElementById('imgMail5892').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5892').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5892" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7452);">Melle POIRIER Nolwenn</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:nolwenn.poirier@insa-rennes.fr" onmouseover="document.getElementById('imgMail7452').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7452').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7452" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5404);">M. POTET Germain</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Germain.Potet@insa-rennes.fr" onmouseover="document.getElementById('imgMail5404').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5404').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5404" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5989);">M. RENAUD Nicolas</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Nicolas.Renaud@insa-rennes.fr" onmouseover="document.getElementById('imgMail5989').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5989').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5989" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5941);">M. SAVARY Cyril</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Cyril.Savary@insa-rennes.fr" onmouseover="document.getElementById('imgMail5941').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5941').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5941" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5794);">M. TEXIER Aurelien</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Aurelien.Texier@insa-rennes.fr" onmouseover="document.getElementById('imgMail5794').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5794').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5794" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5855);">M. THIVEUX Gareth</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Gareth.Thiveux@insa-rennes.fr" onmouseover="document.getElementById('imgMail5855').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5855').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5855" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5885);">Melle TOLLEC Fanny</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Fanny.Tollec@insa-rennes.fr" onmouseover="document.getElementById('imgMail5885').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5885').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5885" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5842);">M. UZEL Baptiste</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Baptiste.Uzel@insa-rennes.fr" onmouseover="document.getElementById('imgMail5842').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5842').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5842" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(6012);">M. VALLEE Cedric</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Cedric.Vallee@insa-rennes.fr" onmouseover="document.getElementById('imgMail6012').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail6012').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail6012" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(7474);">M. VINCENT Carl</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:carl.vincent@insa-rennes.fr" onmouseover="document.getElementById('imgMail7474').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail7474').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail7474" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+</tr>
+<tr valign="top">
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(5907);">M. VIOU Valentin</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Valentin.Viou@insa-rennes.fr" onmouseover="document.getElementById('imgMail5907').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail5907').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail5907" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr valign="top">
+				<td><img class="imageTitre" src="etudiants3_fichiers/puce_titre.gif" align="middle"></td>
+				<td class="contenu_liste2" nowrap="nowrap"><a class="lien" href="javascript:ouvrirDetail(6029);">M. ZERAOUI Yanis</a></td>
+			<td style="width: 100%;" align="left">&nbsp;<a href="mailto:Yanis.Zeraoui@insa-rennes.fr" onmouseover="document.getElementById('imgMail6029').src = '/_include/insa/images/contenu/mail_on.gif'" onmouseout="document.getElementById('imgMail6029').src = '/_include/insa/images/contenu/mail_off.gif'"><img id="imgMail6029" src="etudiants3_fichiers/mail_off.gif" border="0"></a></td>
+			</tr>
+			<tr valign="top">
+				<td>&nbsp;</td>
+				<td colspan="2" class="contenu_liste2">Etudiant</td>
+			</tr>
+		</tbody></table>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+						</tbody></table>
+					</form>
+				</td>
+				<td bgcolor="#ffffff"><img src="etudiants3_fichiers/spacer.gif" height="1" width="20"></td>
+			</tr>
+		</tbody></table>
+		
+		<style>
+	#uc_divRelatif{width: 1003px;position: relative;height: 25px;background-color: #ffffff;}
+	#basPage {position:absolute;top:0px;left:164px;width:839px;border-top: #91acc1 1px solid;}
+	#partieGauche {float:left;font-family:Arial;font-size:10px;color:#41678F;margin-top:5px;}
+	#partieDroite {float:right;font-family:Arial;font-size:10px;color:#41678F;padding-right:12px;margin-top:5px;}
+	#basPage a {color : #41678F;font-family: Arial;font-size : 10px;text-decoration: none;}
+	#basPage a:hover {color : #DD8C00;font-family: Arial;font-size : 10px;text-decoration: none;}
+</style>
+
+<div id="uc_divRelatif">
+
+	<div id="basPage">
+		<div id="partieGauche"><a href="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=487">Copyrights © INSA - RENNES 2005  &#8226;  Mentions légales</a></div>
+		<div id="partieDroite"><a href="http://www.insa-rennes.fr/rubrique.php?SiteID=1&amp;LangueID=1&amp;RubriqueID=289">Contact</a>   &#8226;   <a href="#">Haut de page</a></div>
+	</div>
+
+</div>
+
+
+
+
+		</div>
+		</center>
+
+<!-- eStat -->
+<script language="JavaScript">
+<!--
+var _PJS=0;
+//-->
+</script>
+<script language="JavaScript" src="etudiants3_fichiers/m.js"></script>
+<script language="JavaScript">
+<!--
+if(_PJS) _estatl("279079196773","238038196772","Annuaire","INSA de Rennes");
+//-->
+</script>
+<noscript>
+<IMG
+SRC="http://prof.estat.com/m/web/279079196773?g=238038196772&p=Annuaire&c=INSA%20de%20Rennes&st=0&sjs=0"
+WIDTH="1" HEIGHT="1" />
+</noscript>
+<!-- /eStat -->
+	</body></html>

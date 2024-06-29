@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -pedantic-errors -g CMakeFiles/ProjNorme.dir/main.c.o -o ProjNorme  -lm 

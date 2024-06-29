@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -pedantic-errors -g CMakeFiles/ProjetHeron.dir/main.c.o -o ProjetHeron  -lm 

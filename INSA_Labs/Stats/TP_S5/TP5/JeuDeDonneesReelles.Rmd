@@ -1,0 +1,93 @@
+---
+title: "Jeu de donnees reelles - données quantitatives"
+output: pdf_document
+fontsize: 11pt
+---
+  
+```{r setup, include=FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# dataset hdv2003
+```{r message = FALSE, echo = FALSE}
+# Chargement des données
+library(questionr)
+data(hdv2003)
+dHDV <- hdv2003
+head(dHDV)
+
+# Informations sur les données 
+names(hdv2003)
+str(hdv2003)
+
+```
+     
+## Visualisation
+```{r message = FALSE, echo = FALSE}
+# utilisation de plot
+
+
+# plus joli...
+library(ggplot2)
+ggplot(dHDV) +
+  aes(x = age, y = heures.tv) +
+  geom_count(colour = "red", alpha = .2) +
+  xlab("Âge") +
+  ylab("Heures quotidiennes de télévision") +
+  labs(size = "effectifs")
+```
+
+## Graphique difficile à interpréter : pourquoi ?
+```{r}
+# mesure objective : à vous de jouer ! 
+
+```
+
+# Dataset rp99
+```{r}
+# chargement des données
+data(rp99)
+dRP99 <- rp99
+
+# Informations sur les données 
+names(rp99)
+str(rp99)
+
+```
+
+## Visualisation
+```{r}
+# avec un simple plot
+
+
+# ou plus joli...
+library(ggplot2)
+ggplot(dRP99) +
+  aes(x = dipl.sup, y = cadres) +
+  geom_count(colour = "blue", alpha = .2) +
+  xlab("Part des diplômés du supérieur") +
+  ylab("Part des cadres") +
+  labs(size = "effectifs")
+```
+
+## Analyse du graphique
+
+```{r}
+
+# quelle mesure objective ?
+
+```
+
+
+## Etude multivariée 
+Observez et interprétez les graphiques suivants.
+```{r}
+pairs(dRP99[, c("proprio", "hlm", "locataire", "maison")])
+```
+
+```{r message = FALSE, echo = FALSE}
+library(GGally)
+ggpairs(rp99[, c("hlm", "locataire", "maison", "proprio")])
+ggcorr(rp99)
+```

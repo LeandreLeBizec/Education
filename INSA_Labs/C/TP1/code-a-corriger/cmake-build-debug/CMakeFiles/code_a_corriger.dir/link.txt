@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -pedantic-errors -g CMakeFiles/code_a_corriger.dir/main.c.o -o code_a_corriger 

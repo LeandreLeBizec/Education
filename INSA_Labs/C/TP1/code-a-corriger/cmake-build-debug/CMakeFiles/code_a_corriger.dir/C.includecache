@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home-reseau/llebizec/léandre/Info/3a/C/TP1/code-a-corriger/main.c
+stdlib.h
+-
+stdio.h
+-
+

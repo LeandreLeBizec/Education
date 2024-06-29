@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/TP6.dir/fichier.c.o CMakeFiles/TP6.dir/principal.c.o -o TP6 

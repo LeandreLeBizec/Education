@@ -1,0 +1,104 @@
+---
+title: "Vecteurs aléatoires continus"
+output: pdf_document
+fontsize: 11pt
+---
+  
+```{r setup, include=FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Exercice 3.1 - Lois normales multivariées
+
+```{r}
+library(mnormt)
+library(rgl)
+library(lattice) 
+library(emdbook)
+library(mnormt)
+library(rgl)
+library(mvtnorm)
+```
+
+## parametres de la loi du vecteur gaussien
+```{r}
+# A completer
+Moy <- ........
+MatCov <- .......    
+
+```
+
+
+## generation des realisations des v.a.
+```{r}
+x<-seq(-4,4,0.1)
+y<-seq(-4,4,0.1)
+```
+
+## Generation de la densite de probabilite
+utilisation de la fonction dmnorm
+dmnorm est une generalisation de dnorm
+```{r}
+f<-function(x,y){
+  dmnorm(cbind(x,y), Moy, MatCov)
+}
+# permet d’appliquer une fonction à chaque couple de deux vecteurs
+zDM <- outer(x,y,f)
+
+```
+
+## autre solution
+```{r}
+R <- as.matrix(expand.grid(x, y))
+z2 <- dmvnorm(R,mean=Moy,sigma=MatCov)
+zDMV <- matrix(z2,length(x))
+```
+
+## Visualisation classique
+zDM peut être remplacee par zDMV
+```{r}
+persp(x,y,zDM, box=T,axes=T, ticktype="detailed", theta=40,phi=0)
+persp(x,y,zDM, theta=30,phi=50)
+persp(x,y,zDM, theta=100,phi=40,col = rainbow(12))
+wireframe(zDM)
+```
+
+## Visualisation 3D
+ 
+```{r}
+# generation d'un vecteur qui permettra de colorer le graphique
+col1 <- rainbow(length(z2))[rank(z2)]
+
+#
+curve3d(dmvnorm(c(x,y),sigma=MatCov,mean=Moy),
+        sys3d="rgl",col=col1,
+        xlim=c(-3,3),ylim=c(-3,3))
+```
+
+# Exercice 3.2 - Densités conjointes
+```{r message = FALSE}
+library(MASS)
+data("geyser")
+dGeyser <- geyser
+head(dGeyser)
+
+# La fonction attach permet de ne pas à avoir a preciser a chaque fois le jeu de donnees sur lequel on travaille.
+attach(dGeyser)
+```
+
+## Visualisation simple
+```{r}
+# A completer
+
+```
+
+## Autres visualisations
+```{r}
+# utiliser kde
+
+```
+
+```{r}
+detach(dGeyser)
+```

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home-reseau/llebizec/léandre/Info/3a/C/TP2/projFact/main.c
+stdio.h
+-
+stdlib.h
+-
+limits.h
+-
+

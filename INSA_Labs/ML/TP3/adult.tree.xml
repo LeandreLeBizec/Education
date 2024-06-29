@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<run algorithm="Tree" induction="Entropie" min_leaf_size="0" gain="1e-08" mdlpc="true" nb_rounds="2" depth="4294967295" fs="0" bs="0.62">
+	<target_labels 0="infeq50K" 1="sup50K"/>
+	<tree>
+		<node type="node">
+			<question gain="19.0997" position="5" name="marital-status" type="discret" patron="Married-civ-spouse"/>
+			<population 0="24720" 1="7841"/>
+			<node type="node">
+				<question gain="9.43645" position="4" name="education-num" type="numeric" patron="12.5"/>
+				<population 0="8284" 1="6692"/>
+				<node type="node">
+					<question gain="8.23792" position="10" name="capital-gain" type="numeric" patron="5095.5"/>
+					<population 0="7029" 1="3478"/>
+					<node type="node">
+						<question gain="3.54674" position="4" name="education-num" type="numeric" patron="8.5"/>
+						<population 0="7018" 1="2961"/>
+						<node type="node">
+							<question gain="2.51905" position="0" name="age" type="numeric" patron="36.5"/>
+							<population 0="1489" 1="167"/>
+							<node type="leaf">
+								<population 0="478" 1="23"/>
+							</node>
+							<node type="node">
+								<question gain="2.46076" position="0" name="age" type="numeric" patron="66.5"/>
+								<population 0="1011" 1="144"/>
+								<node type="leaf">
+									<population 0="891" 1="142"/>
+								</node>
+								<node type="leaf">
+									<population 0="120" 1="2"/>
+								</node>
+							</node>
+						</node>
+						<node type="node">
+							<question gain="2.66891" position="0" name="age" type="numeric" patron="35.5"/>
+							<population 0="5529" 1="2794"/>
+							<node type="node">
+								<question gain="2.5391" position="0" name="age" type="numeric" patron="24.5"/>
+								<population 0="2183" 1="599"/>
+								<node type="leaf">
+									<population 0="319" 1="19"/>
+								</node>
+								<node type="node">
+									<question gain="2.10192" position="11" name="capital-loss" type="numeric" patron="1794"/>
+									<population 0="1864" 1="580"/>
+									<node type="node">
+										<question gain="1.57021" position="3" name="education" type="discret" patron="HS-grad"/>
+										<population 0="1838" 1="533"/>
+										<node type="leaf">
+											<population 0="1077" 1="230"/>
+										</node>
+										<node type="leaf">
+											<population 0="761" 1="303"/>
+										</node>
+									</node>
+									<node type="node">
+										<question gain="73.678" position="11" name="capital-loss" type="numeric" patron="1989.5"/>
+										<population 0="26" 1="47"/>
+										<node type="leaf">
+											<population 0="2" 1="46"/>
+										</node>
+										<node type="leaf">
+											<population 0="24" 1="1"/>
+										</node>
+									</node>
+								</node>
+							</node>
+							<node type="node">
+								<question gain="2.44239" position="11" name="capital-loss" type="numeric" patron="1782.5"/>
+								<population 0="3346" 1="2195"/>
+								<node type="node">
+									<question gain="2.13" position="12" name="hours-per-week" type="numeric" patron="34.5"/>
+									<population 0="3294" 1="1990"/>
+									<node type="node">
+										<question gain="6.70859" position="7" name="relationship" type="discret" patron="Wife"/>
+										<population 0="487" 1="91"/>
+										<node type="leaf">
+											<population 0="98" 1="46"/>
+										</node>
+										<node type="leaf">
+											<population 0="389" 1="45"/>
+										</node>
+									</node>
+									<node type="node">
+										<question gain="1.26847" position="3" name="education" type="discret" patron="HS-grad"/>
+										<population 0="2807" 1="1899"/>
+										<node type="node">
+											<question gain="0.79803" position="6" name="occupation" type="discret" patron="Other-service"/>
+											<population 0="1714" 1="908"/>
+											<node type="leaf">
+												<population 0="119" 1="22"/>
+											</node>
+											<node type="node">
+												<question gain="0.772897" position="6" name="occupation" type="discret" patron="Farming-fishing"/>
+												<population 0="1595" 1="886"/>
+												<node type="leaf">
+													<population 0="119" 1="25"/>
+												</node>
+												<node type="leaf">
+													<population 0="1476" 1="861"/>
+												</node>
+											</node>
+										</node>
+										<node type="node">
+											<question gain="1.39275" position="1" name="workclass" type="discret" patron="Self-emp-not-inc"/>
+											<population 0="1093" 1="991"/>
+											<node type="leaf">
+												<population 0="170" 1="68"/>
+											</node>
+											<node type="node">
+												<question gain="1.27059" position="6" name="occupation" type="discret" patron="Exec-managerial"/>
+												<population 0="923" 1="923"/>
+												<node type="leaf">
+													<population 0="117" 1="210"/>
+												</node>
+												<node type="leaf">
+													<population 0="806" 1="713"/>
+												</node>
+											</node>
+										</node>
+									</node>
+								</node>
+								<node type="node">
+									<question gain="48.1168" position="11" name="capital-loss" type="numeric" patron="1989.5"/>
+									<population 0="52" 1="205"/>
+									<node type="leaf">
+										<population 0="6" 1="185"/>
+									</node>
+									<node type="node">
+										<question gain="35.07" position="11" name="capital-loss" type="numeric" patron="2161.5"/>
+										<population 0="46" 1="20"/>
+										<node type="leaf">
+											<population 0="28"/>
+										</node>
+										<node type="node">
+											<question gain="23.2999" position="11" name="capital-loss" type="numeric" patron="2436"/>
+											<population 0="18" 1="20"/>
+											<node type="leaf">
+												<population 0="11" 1="20"/>
+											</node>
+											<node type="leaf">
+												<population 0="7"/>
+											</node>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node type="node">
+						<question gain="34.1545" position="0" name="age" type="numeric" patron="60.5"/>
+						<population 0="11" 1="517"/>
+						<node type="leaf">
+							<population 0="1" 1="461"/>
+						</node>
+						<node type="leaf">
+							<population 0="10" 1="56"/>
+						</node>
+					</node>
+				</node>
+				<node type="node">
+					<question gain="8.6853" position="10" name="capital-gain" type="numeric" patron="5095.5"/>
+					<population 0="1255" 1="3214"/>
+					<node type="node">
+						<question gain="5.02656" position="11" name="capital-loss" type="numeric" patron="1782.5"/>
+						<population 0="1252" 1="2536"/>
+						<node type="node">
+							<question gain="2.24684" position="12" name="hours-per-week" type="numeric" patron="31"/>
+							<population 0="1239" 1="2151"/>
+							<node type="node">
+								<question gain="6.26483" position="7" name="relationship" type="discret" patron="Wife"/>
+								<population 0="194" 1="112"/>
+								<node type="leaf">
+									<population 0="28" 1="45"/>
+								</node>
+								<node type="node">
+									<question gain="6.76679" position="0" name="age" type="numeric" patron="29.5"/>
+									<population 0="166" 1="67"/>
+									<node type="leaf">
+										<population 0="26"/>
+									</node>
+									<node type="leaf">
+										<population 0="140" 1="67"/>
+									</node>
+								</node>
+							</node>
+							<node type="node">
+								<question gain="1.37705" position="0" name="age" type="numeric" patron="28.5"/>
+								<population 0="1045" 1="2039"/>
+								<node type="leaf">
+									<population 0="122" 1="89"/>
+								</node>
+								<node type="node">
+									<question gain="1.35654" position="10" name="capital-gain" type="numeric" patron="3120"/>
+									<population 0="923" 1="1950"/>
+									<node type="node">
+										<question gain="1.31082" position="6" name="occupation" type="discret" patron="Exec-managerial"/>
+										<population 0="882" 1="1939"/>
+										<node type="node">
+											<question gain="3.25564" position="11" name="capital-loss" type="numeric" patron="629"/>
+											<population 0="177" 1="625"/>
+											<node type="leaf">
+												<population 0="168" 1="625"/>
+											</node>
+											<node type="leaf">
+												<population 0="9"/>
+											</node>
+										</node>
+										<node type="node">
+											<question gain="2.47706" position="6" name="occupation" type="discret" patron="Prof-specialty"/>
+											<population 0="705" 1="1314"/>
+											<node type="node">
+												<question gain="1.75685" position="4" name="education-num" type="numeric" patron="14.5"/>
+												<population 0="286" 1="779"/>
+												<node type="leaf">
+													<population 0="233" 1="524"/>
+												</node>
+												<node type="leaf">
+													<population 0="53" 1="255"/>
+												</node>
+											</node>
+											<node type="leaf">
+												<population 0="419" 1="535"/>
+											</node>
+										</node>
+									</node>
+									<node type="node">
+										<question gain="24.8562" position="10" name="capital-gain" type="numeric" patron="4225"/>
+										<population 0="41" 1="11"/>
+										<node type="leaf">
+											<population 0="21"/>
+										</node>
+										<node type="node">
+											<question gain="82.9282" position="10" name="capital-gain" type="numeric" patron="4447"/>
+											<population 0="20" 1="11"/>
+											<node type="leaf">
+												<population 0="1" 1="11"/>
+											</node>
+											<node type="leaf">
+												<population 0="19"/>
+											</node>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+						<node type="node">
+							<question gain="25.2592" position="11" name="capital-loss" type="numeric" patron="1989.5"/>
+							<population 0="13" 1="385"/>
+							<node type="leaf">
+								<population 0="2" 1="325"/>
+							</node>
+							<node type="node">
+								<question gain="71.1383" position="11" name="capital-loss" type="numeric" patron="2168.5"/>
+								<population 0="11" 1="60"/>
+								<node type="leaf">
+									<population 0="9"/>
+								</node>
+								<node type="leaf">
+									<population 0="2" 1="60"/>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node type="leaf">
+						<population 0="3" 1="678"/>
+					</node>
+				</node>
+			</node>
+			<node type="node">
+				<question gain="19.1264" position="10" name="capital-gain" type="numeric" patron="7073.5"/>
+				<population 0="16436" 1="1149"/>
+				<node type="node">
+					<question gain="10.2848" position="4" name="education-num" type="numeric" patron="12.5"/>
+					<population 0="16425" 1="849"/>
+					<node type="node">
+						<question gain="7.00283" position="0" name="age" type="numeric" patron="28.5"/>
+						<population 0="13522" 1="342"/>
+						<node type="node">
+							<question gain="8.05968" position="0" name="age" type="numeric" patron="21.5"/>
+							<population 0="6183" 1="29"/>
+							<node type="leaf">
+								<population 0="2996" 1="1"/>
+							</node>
+							<node type="leaf">
+								<population 0="3187" 1="28"/>
+							</node>
+						</node>
+						<node type="node">
+							<question gain="5.18685" position="12" name="hours-per-week" type="numeric" patron="40.5"/>
+							<population 0="7339" 1="313"/>
+							<node type="node">
+								<question gain="2.39247" position="11" name="capital-loss" type="numeric" patron="2218.5"/>
+								<population 0="5812" 1="152"/>
+								<node type="node">
+									<question gain="2.71114" position="6" name="occupation" type="discret" patron="Prof-specialty"/>
+									<population 0="5795" 1="143"/>
+									<node type="leaf">
+										<population 0="270" 1="27"/>
+									</node>
+									<node type="node">
+										<question gain="2.59611" position="6" name="occupation" type="discret" patron="Exec-managerial"/>
+										<population 0="5525" 1="116"/>
+										<node type="leaf">
+											<population 0="390" 1="27"/>
+										</node>
+										<node type="leaf">
+											<population 0="5135" 1="89"/>
+										</node>
+									</node>
+								</node>
+								<node type="leaf">
+									<population 0="17" 1="9"/>
+								</node>
+							</node>
+							<node type="node">
+								<question gain="3.92356" position="11" name="capital-loss" type="numeric" patron="2232"/>
+								<population 0="1527" 1="161"/>
+								<node type="leaf">
+									<population 0="1518" 1="146"/>
+								</node>
+								<node type="leaf">
+									<population 0="9" 1="15"/>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node type="node">
+						<question gain="8.96164" position="0" name="age" type="numeric" patron="27.5"/>
+						<population 0="2903" 1="507"/>
+						<node type="leaf">
+							<population 0="985" 1="18"/>
+						</node>
+						<node type="node">
+							<question gain="5.63109" position="12" name="hours-per-week" type="numeric" patron="43.5"/>
+							<population 0="1918" 1="489"/>
+							<node type="node">
+								<question gain="3.63718" position="4" name="education-num" type="numeric" patron="14.5"/>
+								<population 0="1315" 1="193"/>
+								<node type="node">
+									<question gain="3.32646" position="0" name="age" type="numeric" patron="42.5"/>
+									<population 0="1242" 1="153"/>
+									<node type="leaf">
+										<population 0="762" 1="57"/>
+									</node>
+									<node type="node">
+										<question gain="3.83571" position="11" name="capital-loss" type="numeric" patron="2232"/>
+										<population 0="480" 1="96"/>
+										<node type="leaf">
+											<population 0="478" 1="88"/>
+										</node>
+										<node type="leaf">
+											<population 0="2" 1="8"/>
+										</node>
+									</node>
+								</node>
+								<node type="node">
+									<question gain="11.9509" position="0" name="age" type="numeric" patron="31.5"/>
+									<population 0="73" 1="40"/>
+									<node type="leaf">
+										<population 0="18"/>
+									</node>
+									<node type="node">
+										<question gain="11.1086" position="1" name="workclass" type="discret" patron="Local-gov"/>
+										<population 0="55" 1="40"/>
+										<node type="leaf">
+											<population 0="12"/>
+										</node>
+										<node type="leaf">
+											<population 0="43" 1="40"/>
+										</node>
+									</node>
+								</node>
+							</node>
+							<node type="node">
+								<question gain="2.97106" position="11" name="capital-loss" type="numeric" patron="2391.5"/>
+								<population 0="603" 1="296"/>
+								<node type="node">
+									<question gain="1.99806" position="6" name="occupation" type="discret" patron="Exec-managerial"/>
+									<population 0="603" 1="281"/>
+									<node type="leaf">
+										<population 0="124" 1="100"/>
+									</node>
+									<node type="node">
+										<question gain="3.04661" position="4" name="education-num" type="numeric" patron="14.5"/>
+										<population 0="479" 1="181"/>
+										<node type="leaf">
+											<population 0="426" 1="132"/>
+										</node>
+										<node type="node">
+											<question gain="13.1187" position="0" name="age" type="numeric" patron="32.5"/>
+											<population 0="53" 1="49"/>
+											<node type="leaf">
+												<population 0="27" 1="6"/>
+											</node>
+											<node type="leaf">
+												<population 0="26" 1="43"/>
+											</node>
+										</node>
+									</node>
+								</node>
+								<node type="leaf">
+									<population 1="15"/>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node type="node">
+					<question gain="29.808" position="0" name="age" type="numeric" patron="20.5"/>
+					<population 0="11" 1="300"/>
+					<node type="leaf">
+						<population 0="4"/>
+					</node>
+					<node type="node">
+						<question gain="44.5558" position="10" name="capital-gain" type="numeric" patron="8296"/>
+						<population 0="7" 1="300"/>
+						<node type="node">
+							<question gain="62.0347" position="4" name="education-num" type="numeric" patron="11.5"/>
+							<population 0="6" 1="13"/>
+							<node type="node">
+								<question gain="100" position="1" name="workclass" type="discret" patron="Private"/>
+								<population 0="6" 1="2"/>
+								<node type="leaf">
+									<population 0="6"/>
+								</node>
+								<node type="leaf">
+									<population 1="2"/>
+								</node>
+							</node>
+							<node type="leaf">
+								<population 1="11"/>
+							</node>
+						</node>
+						<node type="leaf">
+							<population 0="1" 1="287"/>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+	</tree>
+</run>
+

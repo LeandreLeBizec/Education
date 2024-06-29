@@ -1,0 +1,4 @@
+/usr/share/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home-reseau/llebizec/léandre/Info/3a/C/TP1/ProjCarre
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home-reseau/llebizec/léandre/Info/3a/C/TP1/ProjCarre/cmake-build-debug

@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra -pedantic-errors -g CMakeFiles/ProjCarre.dir/main.c.o -o ProjCarre 
